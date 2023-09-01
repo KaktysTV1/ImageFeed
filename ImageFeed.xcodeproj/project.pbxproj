@@ -60,14 +60,22 @@
 			children = (
 				EFB838D52A9B9339008FED55 /* AppDelegate.swift */,
 				EFB838D72A9B9339008FED55 /* SceneDelegate.swift */,
-				EFB838D92A9B9339008FED55 /* ImagesListViewController.swift */,
-				EFB8390D2A9FC0B3008FED55 /* ImagesListCell.swift */,
+				EFB8390F2AA11C05008FED55 /* imagesList */,
 				EFB838DB2A9B9339008FED55 /* Main.storyboard */,
 				EFB838E02A9B933A008FED55 /* LaunchScreen.storyboard */,
 				EFB838DE2A9B933A008FED55 /* Assets.xcassets */,
 				EFB838E32A9B933A008FED55 /* Info.plist */,
 			);
 			path = ImageFeed;
+			sourceTree = "<group>";
+		};
+		EFB8390F2AA11C05008FED55 /* imagesList */ = {
+			isa = PBXGroup;
+			children = (
+				EFB838D92A9B9339008FED55 /* ImagesListViewController.swift */,
+				EFB8390D2A9FC0B3008FED55 /* ImagesListCell.swift */,
+			);
+			path = imagesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
