@@ -60,7 +60,7 @@
 			children = (
 				EFB838D52A9B9339008FED55 /* AppDelegate.swift */,
 				EFB838D72A9B9339008FED55 /* SceneDelegate.swift */,
-				EFB8390F2AA11C05008FED55 /* imagesList */,
+				EFB8390F2AA11C05008FED55 /* ImagesList */,
 				EFB838DB2A9B9339008FED55 /* Main.storyboard */,
 				EFB838E02A9B933A008FED55 /* LaunchScreen.storyboard */,
 				EFB838DE2A9B933A008FED55 /* Assets.xcassets */,
@@ -69,13 +69,13 @@
 			path = ImageFeed;
 			sourceTree = "<group>";
 		};
-		EFB8390F2AA11C05008FED55 /* imagesList */ = {
+		EFB8390F2AA11C05008FED55 /* ImagesList */ = {
 			isa = PBXGroup;
 			children = (
 				EFB838D92A9B9339008FED55 /* ImagesListViewController.swift */,
 				EFB8390D2A9FC0B3008FED55 /* ImagesListCell.swift */,
 			);
-			path = imagesList;
+			path = ImagesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +305,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -338,7 +339,8 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

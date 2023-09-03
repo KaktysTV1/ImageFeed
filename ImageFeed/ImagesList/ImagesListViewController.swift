@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImagesListViewController: UIViewController {
+final class ImagesListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,6 +26,10 @@ class ImagesListViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
        
         tableView.dataSource = self
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
@@ -48,7 +52,7 @@ extension ImagesListViewController: UITableViewDataSource {
 }
 
 extension ImagesListViewController {
-    func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
+    private func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
         guard let image = UIImage(named: photosName[indexPath.row]) else {
             return
         }
@@ -57,10 +61,10 @@ extension ImagesListViewController {
         cell.dataLable.text = dateFormatter.string(from: Date())
         
         let isLike = indexPath.row % 2 == 0
-        let likeImage = isLike ? UIImage(named: "NoActiveLikeButton") : UIImage(named: "ActiveLikeButton")
+        let likeImage = isLike ? UIImage(named: "ActiveLikeButton") : UIImage(named: "NoActiveLikeButton")
         cell.likeButton.setImage(likeImage, for: .normal)
     }
-}
+} 
 
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
