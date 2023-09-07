@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f6E-dz-Zzg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="483" y="-668"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="yOu-e2-5KI">
             <objects>
-                <viewController id="f6E-dz-Zzg" customClass="ProfileViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Profile" id="f6E-dz-Zzg" userLabel="Profile" customClass="ProfileViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xtx-aq-UJZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,6 +118,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="Exit"/>
+                                <connections>
+                                    <action selector="didTapLogoutButton:" destination="f6E-dz-Zzg" eventType="touchUpInside" id="ubM-AA-AVe"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Екатерина Новикова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdT-8y-9uW" userLabel="Name Lable">
                                 <rect key="frame" x="16" y="158" width="382" height="28"/>
@@ -157,6 +160,13 @@
                             <constraint firstItem="pHe-TK-S07" firstAttribute="top" secondItem="CY1-9E-rOf" secondAttribute="bottom" constant="8" id="w2K-Af-CcR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="avatarImage" destination="eoN-Pk-Hn5" id="zIB-kv-EsE"/>
+                        <outlet property="descriptionLable" destination="pHe-TK-S07" id="9gK-Vf-2o3"/>
+                        <outlet property="loginLableName" destination="CY1-9E-rOf" id="j3K-EV-8IQ"/>
+                        <outlet property="logoutButton" destination="vCf-97-xT1" id="z2N-Bp-oMY"/>
+                        <outlet property="nameLable" destination="VdT-8y-9uW" id="Ojo-Rd-Ced"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4n-RK-dA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
