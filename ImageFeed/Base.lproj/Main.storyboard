@@ -19,7 +19,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QXb-oD-RVL">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" name="YP Background"/>
+                                <color key="backgroundColor" name="ypBackground"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="224" id="q79-gu-tcS" customClass="ImagesListCell" customModule="ImageFeed" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="414" height="224"/>
@@ -47,7 +47,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXM-XT-4St" userLabel="Date Lable">
                                                     <rect key="frame" x="24" y="196" width="102" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" name="YP White"/>
+                                                    <color key="textColor" name="ypWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -148,7 +148,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="j1y-3c-6KS"/>
-                        <color key="backgroundColor" name="YP Black"/>
+                        <color key="backgroundColor" name="ypBackground"/>
                         <constraints>
                             <constraint firstItem="WrQ-m0-mib" firstAttribute="centerX" secondItem="j1y-3c-6KS" secondAttribute="centerX" id="4fF-kG-aWU"/>
                             <constraint firstItem="j1y-3c-6KS" firstAttribute="trailing" secondItem="sf0-EQ-YCq" secondAttribute="trailing" id="BpN-7Z-u3O"/>
@@ -197,71 +197,10 @@
                     <view key="view" contentMode="scaleToFill" id="Xtx-aq-UJZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="eoN-Pk-Hn5">
-                                <rect key="frame" x="16" y="80" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="6lJ-T9-dyx"/>
-                                    <constraint firstAttribute="width" constant="70" id="feJ-4B-lyz"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-97-xT1" userLabel="Logout Button">
-                                <rect key="frame" x="374" y="103" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="5M6-dI-XqJ"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="Exit"/>
-                                <connections>
-                                    <action selector="didTapLogoutButton:" destination="f6E-dz-Zzg" eventType="touchUpInside" id="ubM-AA-AVe"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Екатерина Новикова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdT-8y-9uW" userLabel="Name Lable">
-                                <rect key="frame" x="16" y="158" width="382" height="28"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
-                                <color key="textColor" name="YP White"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ekaterina_nov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CY1-9E-rOf" userLabel="Login Lable Name">
-                                <rect key="frame" x="16" y="194" width="382" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" name="YP Gray"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Привет, мир!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHe-TK-S07" userLabel="Description Label">
-                                <rect key="frame" x="16" y="218" width="382" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" name="YP White"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="gy0-8s-7o6"/>
                         <color key="backgroundColor" name="YP Background"/>
-                        <constraints>
-                            <constraint firstItem="pHe-TK-S07" firstAttribute="trailing" secondItem="VdT-8y-9uW" secondAttribute="trailing" id="3rD-HW-j4N"/>
-                            <constraint firstItem="eoN-Pk-Hn5" firstAttribute="top" secondItem="gy0-8s-7o6" secondAttribute="top" constant="32" id="H05-Hr-AbO"/>
-                            <constraint firstItem="pHe-TK-S07" firstAttribute="leading" secondItem="VdT-8y-9uW" secondAttribute="leading" id="Jd6-fE-qrM"/>
-                            <constraint firstItem="VdT-8y-9uW" firstAttribute="trailing" secondItem="vCf-97-xT1" secondAttribute="trailing" id="PNq-c9-qbX"/>
-                            <constraint firstItem="VdT-8y-9uW" firstAttribute="leading" secondItem="eoN-Pk-Hn5" secondAttribute="leading" id="Vnt-OM-e80"/>
-                            <constraint firstItem="VdT-8y-9uW" firstAttribute="top" secondItem="eoN-Pk-Hn5" secondAttribute="bottom" constant="8" symbolic="YES" id="baS-a8-2M0"/>
-                            <constraint firstItem="vCf-97-xT1" firstAttribute="centerY" secondItem="eoN-Pk-Hn5" secondAttribute="centerY" id="cXT-wQ-ijb"/>
-                            <constraint firstItem="CY1-9E-rOf" firstAttribute="top" secondItem="VdT-8y-9uW" secondAttribute="bottom" constant="8" id="f7L-en-y5X"/>
-                            <constraint firstItem="vCf-97-xT1" firstAttribute="top" secondItem="gy0-8s-7o6" secondAttribute="top" constant="55" id="hRq-jB-vJp"/>
-                            <constraint firstItem="eoN-Pk-Hn5" firstAttribute="leading" secondItem="gy0-8s-7o6" secondAttribute="leading" constant="16" id="o0F-Jn-VW6"/>
-                            <constraint firstItem="CY1-9E-rOf" firstAttribute="leading" secondItem="VdT-8y-9uW" secondAttribute="leading" id="oEX-1e-2yg"/>
-                            <constraint firstItem="CY1-9E-rOf" firstAttribute="trailing" secondItem="VdT-8y-9uW" secondAttribute="trailing" id="qcX-bV-UGW"/>
-                            <constraint firstItem="gy0-8s-7o6" firstAttribute="trailing" secondItem="vCf-97-xT1" secondAttribute="trailing" constant="16" id="via-3V-Sjf"/>
-                            <constraint firstItem="pHe-TK-S07" firstAttribute="top" secondItem="CY1-9E-rOf" secondAttribute="bottom" constant="8" id="w2K-Af-CcR"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ProfileActive" id="oGH-2w-drN"/>
-                    <connections>
-                        <outlet property="avatarImage" destination="eoN-Pk-Hn5" id="zIB-kv-EsE"/>
-                        <outlet property="descriptionLable" destination="pHe-TK-S07" id="9gK-Vf-2o3"/>
-                        <outlet property="loginLableName" destination="CY1-9E-rOf" id="j3K-EV-8IQ"/>
-                        <outlet property="logoutButton" destination="vCf-97-xT1" id="z2N-Bp-oMY"/>
-                        <outlet property="nameLable" destination="VdT-8y-9uW" id="Ojo-Rd-Ced"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4n-RK-dA4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -271,9 +210,7 @@
     <resources>
         <image name="0" width="200" height="132"/>
         <image name="ActiveLikeButton" width="44" height="44"/>
-        <image name="Avatar" width="70" height="70"/>
         <image name="Back" width="24" height="24"/>
-        <image name="Exit" width="20" height="22"/>
         <image name="MainActive" width="30" height="30"/>
         <image name="ProfileActive" width="30" height="30"/>
         <image name="Share" width="50" height="50"/>
@@ -283,13 +220,16 @@
         <namedColor name="YP Black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="YP Gray">
-            <color red="0.68199998140335083" green="0.68599998950958252" blue="0.70599997043609619" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="YP Red ">
             <color red="0.96100002527236938" green="0.41999998688697815" blue="0.42399999499320984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="YP White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ypBackground">
+            <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="0.49500000476837158" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ypWhite">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
