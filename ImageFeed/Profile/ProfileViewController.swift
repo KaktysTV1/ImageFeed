@@ -50,7 +50,7 @@ final class ProfileViewController: UIViewController {
     private let logoutButton: UIButton = {
         let button = UIButton.systemButton(
             with: UIImage(named: "Exit")!,
-            target: ProfileViewController.self,
+            target: self,
             action: #selector(Self.didTapButton)
         )
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -58,10 +58,6 @@ final class ProfileViewController: UIViewController {
         
         return button
     }()
-    
-    @objc func didTapButton() {
-        print("Tap tap tap")
-    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent;
@@ -103,5 +99,9 @@ final class ProfileViewController: UIViewController {
         constraints.append(logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 45))
         
         NSLayoutConstraint.activate(constraints)
+    }
+    
+    @objc private func didTapButton() {
+        print("Tap tap tap")
     }
 }
