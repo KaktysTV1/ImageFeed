@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF4146FA2AB8D0F4002C0FC0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4146F92AB8D0F4002C0FC0 /* UIColor.swift */; };
+		EF4146FC2ABF6C83002C0FC0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4146FB2ABF6C83002C0FC0 /* Constants.swift */; };
 		EFB838D62A9B9339008FED55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D52A9B9339008FED55 /* AppDelegate.swift */; };
 		EFB838D82A9B9339008FED55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D72A9B9339008FED55 /* SceneDelegate.swift */; };
 		EFB838DA2A9B9339008FED55 /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D92A9B9339008FED55 /* ImagesListViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		EF4146F92AB8D0F4002C0FC0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		EF4146FB2ABF6C83002C0FC0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EFB838D22A9B9339008FED55 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB838D52A9B9339008FED55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB838D72A9B9339008FED55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				EFB838D52A9B9339008FED55 /* AppDelegate.swift */,
 				EFB838D72A9B9339008FED55 /* SceneDelegate.swift */,
+				EF4146FB2ABF6C83002C0FC0 /* Constants.swift */,
 				EFB8390F2AA11C05008FED55 /* ImagesList */,
 				EFB839122AA9EC60008FED55 /* Profile */,
 				EFB839162AB080AC008FED55 /* SingleImageViewController */,
@@ -189,6 +192,7 @@
 				EFB838D62A9B9339008FED55 /* AppDelegate.swift in Sources */,
 				EFB839182AB080D2008FED55 /* SingleImageViewController.swift in Sources */,
 				EFB838D82A9B9339008FED55 /* SceneDelegate.swift in Sources */,
+				EF4146FC2ABF6C83002C0FC0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
