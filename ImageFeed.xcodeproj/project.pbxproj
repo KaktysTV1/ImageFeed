@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EF4146FA2AB8D0F4002C0FC0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4146F92AB8D0F4002C0FC0 /* UIColor.swift */; };
 		EF4146FC2ABF6C83002C0FC0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4146FB2ABF6C83002C0FC0 /* Constants.swift */; };
+		EF4146FF2AC0CA64002C0FC0 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4146FE2AC0CA64002C0FC0 /* AuthViewController.swift */; };
+		EF4147012AC0CEA1002C0FC0 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4147002AC0CEA1002C0FC0 /* WebViewViewController.swift */; };
 		EFB838D62A9B9339008FED55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D52A9B9339008FED55 /* AppDelegate.swift */; };
 		EFB838D82A9B9339008FED55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D72A9B9339008FED55 /* SceneDelegate.swift */; };
 		EFB838DA2A9B9339008FED55 /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D92A9B9339008FED55 /* ImagesListViewController.swift */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		EF4146F92AB8D0F4002C0FC0 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		EF4146FB2ABF6C83002C0FC0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EF4146FE2AC0CA64002C0FC0 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		EF4147002AC0CEA1002C0FC0 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		EFB838D22A9B9339008FED55 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB838D52A9B9339008FED55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB838D72A9B9339008FED55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		EF4146FD2AC0C9EF002C0FC0 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				EF4146FE2AC0CA64002C0FC0 /* AuthViewController.swift */,
+				EF4147002AC0CEA1002C0FC0 /* WebViewViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		EFB838C92A9B9339008FED55 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +91,7 @@
 				EFB838D72A9B9339008FED55 /* SceneDelegate.swift */,
 				EF4146FB2ABF6C83002C0FC0 /* Constants.swift */,
 				EFB8390F2AA11C05008FED55 /* ImagesList */,
+				EF4146FD2AC0C9EF002C0FC0 /* Auth */,
 				EFB839122AA9EC60008FED55 /* Profile */,
 				EFB839162AB080AC008FED55 /* SingleImageViewController */,
 				EF4146F82AB8D0C7002C0FC0 /* Helpers */,
@@ -185,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF4147012AC0CEA1002C0FC0 /* WebViewViewController.swift in Sources */,
 				EFB838DA2A9B9339008FED55 /* ImagesListViewController.swift in Sources */,
 				EF4146FA2AB8D0F4002C0FC0 /* UIColor.swift in Sources */,
 				EFB8390E2A9FC0B3008FED55 /* ImagesListCell.swift in Sources */,
@@ -192,6 +207,7 @@
 				EFB838D62A9B9339008FED55 /* AppDelegate.swift in Sources */,
 				EFB839182AB080D2008FED55 /* SingleImageViewController.swift in Sources */,
 				EFB838D82A9B9339008FED55 /* SceneDelegate.swift in Sources */,
+				EF4146FF2AC0CA64002C0FC0 /* AuthViewController.swift in Sources */,
 				EF4146FC2ABF6C83002C0FC0 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
