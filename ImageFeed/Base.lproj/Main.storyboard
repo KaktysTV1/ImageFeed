@@ -264,12 +264,19 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="BackButtonBlack"/>
                             </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="50o-k7-pMe">
+                                <rect key="frame" x="0.0" y="40" width="414" height="4"/>
+                                <color key="progressTintColor" name="ypBlack"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sZf-CD-wyc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="mvR-aM-gPR" secondAttribute="bottom" id="2BM-Ny-g5g"/>
+                            <constraint firstAttribute="trailing" secondItem="50o-k7-pMe" secondAttribute="trailing" id="FNf-u8-qwl"/>
+                            <constraint firstItem="50o-k7-pMe" firstAttribute="bottom" secondItem="T9g-NE-n5s" secondAttribute="bottom" id="O52-aF-R8B"/>
                             <constraint firstItem="T9g-NE-n5s" firstAttribute="top" secondItem="sZf-CD-wyc" secondAttribute="top" id="PUX-1D-heB"/>
+                            <constraint firstItem="50o-k7-pMe" firstAttribute="leading" secondItem="J7k-Vm-n9S" secondAttribute="leading" id="Wal-AU-tGL"/>
                             <constraint firstItem="mvR-aM-gPR" firstAttribute="top" secondItem="J7k-Vm-n9S" secondAttribute="top" id="cpF-QH-VCQ"/>
                             <constraint firstItem="T9g-NE-n5s" firstAttribute="leading" secondItem="sZf-CD-wyc" secondAttribute="leading" id="fQz-bS-ee0"/>
                             <constraint firstAttribute="trailing" secondItem="mvR-aM-gPR" secondAttribute="trailing" id="lCB-Cs-kUf"/>
@@ -278,6 +285,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ECt-rN-3UT"/>
                     <connections>
+                        <outlet property="progressView" destination="50o-k7-pMe" id="Jos-ht-eb9"/>
                         <outlet property="webView" destination="mvR-aM-gPR" id="ncp-8v-Aec"/>
                     </connections>
                 </viewController>
