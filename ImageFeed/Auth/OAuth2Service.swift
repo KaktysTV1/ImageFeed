@@ -21,10 +21,7 @@ final class OAuth2Service {
         }
     }
     
-    func fetchOAuthToken(
-        _ code: String,
-        completion: @escaping (Result<String, Error>) -> Void
-    ) {
+    func fetchOAuthToken(_ code: String, completion: @escaping (Result<String, Error>) -> Void) {
         let request = authTokenRequest(code: code)
         let task = object(for: request) {[weak self] result in
             guard let self = self else {return}
@@ -67,13 +64,11 @@ extension OAuth2Service {
     }
 }
 
-fileprivate let DefaultBaseURL = URL(string: "https://api.unsplash.com")!
-
 extension URLRequest {
     static func makeHTTPRequest(
         path: String,
         httpMethod: String,
-        baseURL: URL = DefaultBaseURL
+        baseURL: URL = defaultBaseURL!
     ) -> URLRequest {
         var request = URLRequest(url: URL(string: path, relativeTo: baseURL)!)
         request.httpMethod = httpMethod
@@ -100,7 +95,7 @@ extension URLSession {
                     fulfillCompletion(.success(data))
                 } else {
                     fulfillCompletion(.failure(NetworkError .httpStatusCode(statusCode)))
-                    print(String(data: data, encoding: .utf8)) 
+                    //print(String(data: data, encoding: .utf8))
                 }
             } else if let error = error {
                 fulfillCompletion(.failure(NetworkError.urlRequestError(error)))
