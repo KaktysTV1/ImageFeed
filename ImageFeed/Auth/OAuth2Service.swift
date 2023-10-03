@@ -7,7 +7,7 @@
 
 import Foundation
 
-fileprivate let UnsplashTokenURL = "https://unsplash.com/oauth/token"
+fileprivate let unsplashTokenURL = "https://unsplash.com/oauth/token"
 
 final class OAuth2Service {
     static let shared = OAuth2Service()
@@ -68,9 +68,9 @@ extension URLRequest {
     static func makeHTTPRequest(
         path: String,
         httpMethod: String,
-        baseURL: URL = defaultBaseURL!
+        baseURL: URL = defaultBaseURL
     ) -> URLRequest {
-        var request = URLRequest(url: URL(string: path, relativeTo: baseURL)!)
+        var request = URLRequest(url: URL(string: path, relativeTo: baseURL) ?? defaultBaseURL)
         request.httpMethod = httpMethod
         return request
     }
