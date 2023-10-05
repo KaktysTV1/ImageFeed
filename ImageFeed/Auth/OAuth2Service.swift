@@ -95,7 +95,6 @@ extension URLSession {
                     fulfillCompletion(.success(data))
                 } else {
                     fulfillCompletion(.failure(NetworkError .httpStatusCode(statusCode)))
-                    //print(String(data: data, encoding: .utf8))
                 }
             } else if let error = error {
                 fulfillCompletion(.failure(NetworkError.urlRequestError(error)))
