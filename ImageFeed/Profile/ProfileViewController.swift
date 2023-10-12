@@ -8,6 +8,8 @@
 import UIKit
 
 final class ProfileViewController: UIViewController {
+    private let storageToken = OAuth2TokenStorage()
+    private let profileService = ProfileService.shared
     
     private let imageView: UIImageView = {
         let image = UIImage(named: "Avatar.png")
@@ -67,6 +69,7 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        updateProfileDetails(profile: profileService.profile)
     }
     
     private func setupViews() {
@@ -103,5 +106,14 @@ final class ProfileViewController: UIViewController {
     
     @objc private func didTapButton() {
         print("Tap tap tap")
+    }
+}
+
+extension ProfileViewController {
+    private func updateProfileDetails(profile: Profile?) {
+        guard let profile = profileService.profile else {return}
+        nameLabel.text = profile.name
+        usernameLabel.text = profile.loginName
+        userDescription.text = profile.bio
     }
 }
