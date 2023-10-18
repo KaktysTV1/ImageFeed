@@ -18,6 +18,8 @@
 		EF4458A82AD32F1C004A9CC6 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = EF4458A72AD32F1C004A9CC6 /* ProgressHUD */; };
 		EF4458AA2AD41B9A004A9CC6 /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4458A92AD41B9A004A9CC6 /* UIBlockingProgressHUD.swift */; };
 		EF4458AC2AD41F9E004A9CC6 /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4458AB2AD41F9E004A9CC6 /* ProfileService.swift */; };
+		EF4458AE2ADC51F1004A9CC6 /* ProfileImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4458AD2ADC51F1004A9CC6 /* ProfileImageService.swift */; };
+		EF4458B02AE01A66004A9CC6 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4458AF2AE01A66004A9CC6 /* URLSession.swift */; };
 		EFB838D62A9B9339008FED55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D52A9B9339008FED55 /* AppDelegate.swift */; };
 		EFB838D82A9B9339008FED55 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D72A9B9339008FED55 /* SceneDelegate.swift */; };
 		EFB838DA2A9B9339008FED55 /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB838D92A9B9339008FED55 /* ImagesListViewController.swift */; };
@@ -40,6 +42,8 @@
 		EF41650D2AC9D76B00BA637F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		EF4458A92AD41B9A004A9CC6 /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		EF4458AB2AD41F9E004A9CC6 /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
+		EF4458AD2ADC51F1004A9CC6 /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
+		EF4458AF2AE01A66004A9CC6 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		EFB838D22A9B9339008FED55 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB838D52A9B9339008FED55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB838D72A9B9339008FED55 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				EF4146F92AB8D0F4002C0FC0 /* UIColor.swift */,
+				EF4458AF2AE01A66004A9CC6 /* URLSession.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			children = (
 				EFB839102AA9EC45008FED55 /* ProfileViewController.swift */,
 				EF4458AB2AD41F9E004A9CC6 /* ProfileService.swift */,
+				EF4458AD2ADC51F1004A9CC6 /* ProfileImageService.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -239,6 +245,7 @@
 				EF4165072AC498FD00BA637F /* OAuthTokenResponseBody.swift in Sources */,
 				EF4146FA2AB8D0F4002C0FC0 /* UIColor.swift in Sources */,
 				EFB8390E2A9FC0B3008FED55 /* ImagesListCell.swift in Sources */,
+				EF4458AE2ADC51F1004A9CC6 /* ProfileImageService.swift in Sources */,
 				EF4165042AC1F9D000BA637F /* OAuth2Service.swift in Sources */,
 				EFB839112AA9EC45008FED55 /* ProfileViewController.swift in Sources */,
 				EFB838D62A9B9339008FED55 /* AppDelegate.swift in Sources */,
@@ -246,6 +253,7 @@
 				EF41650E2AC9D76B00BA637F /* SplashViewController.swift in Sources */,
 				EFB839182AB080D2008FED55 /* SingleImageViewController.swift in Sources */,
 				EFB838D82A9B9339008FED55 /* SceneDelegate.swift in Sources */,
+				EF4458B02AE01A66004A9CC6 /* URLSession.swift in Sources */,
 				EF4146FF2AC0CA64002C0FC0 /* AuthViewController.swift in Sources */,
 				EF4165092AC499BE00BA637F /* OAuth2TokenStorage.swift in Sources */,
 				EF4146FC2ABF6C83002C0FC0 /* Constants.swift in Sources */,

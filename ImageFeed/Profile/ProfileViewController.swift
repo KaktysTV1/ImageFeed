@@ -10,6 +10,7 @@ import UIKit
 final class ProfileViewController: UIViewController {
     private let storageToken = OAuth2TokenStorage()
     private let profileService = ProfileService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
     
     private let imageView: UIImageView = {
         let image = UIImage(named: "Avatar.png")
@@ -70,6 +71,21 @@ final class ProfileViewController: UIViewController {
         setupViews()
         setupConstraints()
         updateProfileDetails(profile: profileService.profile)
+        
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(forName: ProfileImageService.DidChangeNotification, object: nil, queue: .main){
+                [weak self] _ in
+                guard let self = self else {return}
+                self.updateAvatar()
+            }
+        updateAvatar()
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else {return}
     }
     
     private func setupViews() {
