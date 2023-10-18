@@ -46,7 +46,7 @@ final class ProfileImageService {
 extension ProfileImageService {
     
     private func makeRequest(token: String, username: String) -> URLRequest {
-        guard let url = URL(string: "https://unsplash.com" + "/users/" + username) else { fatalError("Failed to create URL") }
+        guard let url = URL(string: "\(defaultBaseApiURL)" + "/users/" + username) else { fatalError("Failed to create URL") }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         print("Это request2 \(request)")
