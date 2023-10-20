@@ -42,7 +42,6 @@ extension ProfileService {
         guard let url = URL(string: "\(defaultBaseApiURL)" + "/me") else { fatalError("Failed to create URL") }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        print("Это request \(request)")
         return request
     }
 }
