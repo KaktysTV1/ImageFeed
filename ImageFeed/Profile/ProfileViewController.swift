@@ -73,27 +73,8 @@ final class ProfileViewController: UIViewController {
         setupViews()
         setupConstraints()
         updateProfileDetails(profile: profileService.profile)
-        
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(forName: ProfileImageService.DidChangeNotification, object: nil, queue: .main){
-                [weak self] _ in
-                guard let self = self else {return}
-                self.updateAvatar()
-            }
         updateAvatar()
-    }
-    
-    private func updateAvatar() {
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let url = URL(string: profileImageURL)
-        else {return}
-        let processor = RoundCornerImageProcessor(cornerRadius: imageView.frame.width)
-        imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder.svg"), options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
-        let cache = ImageCache.default
-        cache.clearDiskCache()
-        cache.clearMemoryCache()
+        observeAvatarChanges()
     }
     
     private func setupViews() {
@@ -139,5 +120,28 @@ extension ProfileViewController {
         nameLabel.text = profile.name
         usernameLabel.text = profile.loginName
         userDescription.text = profile.bio
+    }
+    
+    private func observeAvatarChanges(){
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(forName: ProfileImageService.DidChangeNotification, object: nil, queue: .main){
+                [weak self] _ in
+                guard let self = self else {return}
+                self.updateAvatar()
+            }
+        updateAvatar()
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else {return}
+        let processor = RoundCornerImageProcessor(cornerRadius: imageView.frame.width)
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder.svg"), options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
+        let cache = ImageCache.default
+        cache.clearDiskCache()
+        cache.clearMemoryCache()
     }
 }

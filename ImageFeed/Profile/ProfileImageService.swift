@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 final class ProfileImageService {
-    static let shared = ProfileImageService()
     static let DidChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
+    static let shared = ProfileImageService()
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private let storageToken = OAuth2TokenStorage()
@@ -20,20 +21,17 @@ final class ProfileImageService {
 
         let request = makeRequest(token: storageToken.token!, username: username)
         let session = URLSession.shared
-        let task = session.objectTask(for: request) {[weak self] (result: Result<UserResult, Error>) in
-            guard let self = self else {return}
+        let task = session.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
+            guard let self = self else { return }
             switch result {
             case .success(let decodedObject):
                 let avatarURL = ProfileImage(decodedData: decodedObject)
                 self.avatarURL = avatarURL.profileImage["large"]
                 completion(.success(self.avatarURL!))
-                NotificationCenter.default
-                    .post(
-                        name: ProfileImageService.DidChangeNotification,
-                        object: self,
-                        userInfo: ["URL": self.avatarURL!]
-                    )
-                
+                NotificationCenter.default.post(
+                    name: ProfileImageService.DidChangeNotification,
+                    object: self,
+                    userInfo: ["URL": self.avatarURL!])
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -41,9 +39,6 @@ final class ProfileImageService {
         self.task = task
         task.resume()
     }
-}
-
-extension ProfileImageService {
     
     private func makeRequest(token: String, username: String) -> URLRequest {
         guard let url = URL(string: "\(defaultBaseApiURL)" + "/users/" + username) else { fatalError("Failed to create URL") }
@@ -52,6 +47,7 @@ extension ProfileImageService {
         print("реквест аватарки \(request)")
         return request
     }
+    
 }
 
 struct UserResult: Codable {
