@@ -32,6 +32,7 @@
 		EFB8390E2A9FC0B3008FED55 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB8390D2A9FC0B3008FED55 /* ImagesListCell.swift */; };
 		EFB839112AA9EC45008FED55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB839102AA9EC45008FED55 /* ProfileViewController.swift */; };
 		EFB839182AB080D2008FED55 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB839172AB080D2008FED55 /* SingleImageViewController.swift */; };
+		EFBE4B822AE85B5500924543 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE4B812AE85B5500924543 /* ProfileModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		EFB8390D2A9FC0B3008FED55 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		EFB839102AA9EC45008FED55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EFB839172AB080D2008FED55 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
+		EFBE4B812AE85B5500924543 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				EFB839102AA9EC45008FED55 /* ProfileViewController.swift */,
 				EF4458AB2AD41F9E004A9CC6 /* ProfileService.swift */,
+				EFBE4B812AE85B5500924543 /* ProfileModel.swift */,
 				EF4458AD2ADC51F1004A9CC6 /* ProfileImageService.swift */,
 			);
 			path = Profile;
@@ -273,6 +276,7 @@
 				EF41650E2AC9D76B00BA637F /* SplashViewController.swift in Sources */,
 				EFB839182AB080D2008FED55 /* SingleImageViewController.swift in Sources */,
 				EFB838D82A9B9339008FED55 /* SceneDelegate.swift in Sources */,
+				EFBE4B822AE85B5500924543 /* ProfileModel.swift in Sources */,
 				EF4458B02AE01A66004A9CC6 /* URLSession.swift in Sources */,
 				EF4146FF2AC0CA64002C0FC0 /* AuthViewController.swift in Sources */,
 				EF4165092AC499BE00BA637F /* OAuth2TokenStorage.swift in Sources */,

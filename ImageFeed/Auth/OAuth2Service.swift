@@ -11,15 +11,16 @@ fileprivate let unsplashTokenURL = "https://unsplash.com/oauth/token"
 
 final class OAuth2Service {
     static let shared = OAuth2Service()
+    private init(){}
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private var lastCode: String?
     private (set) var authToken: String? {
         get {
-            return OAuth2TokenStorage().token
+            return OAuth2TokenStorage.shared.token
         }
         set {
-            OAuth2TokenStorage().token = newValue
+            OAuth2TokenStorage.shared.token = newValue
         }
     }
     

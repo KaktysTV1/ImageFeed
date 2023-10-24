@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 final class ProfileViewController: UIViewController {
-    private let storageToken = OAuth2TokenStorage()
+    private let storageToken = OAuth2TokenStorage.shared
     private let profileService = ProfileService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
     private var profileImage = UIImage(named: "Avatar.png")
@@ -73,8 +73,11 @@ final class ProfileViewController: UIViewController {
         setupViews()
         setupConstraints()
         updateProfileDetails(profile: profileService.profile)
-        updateAvatar()
         observeAvatarChanges()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateAvatar()
     }
     
     private func setupViews() {
@@ -116,7 +119,7 @@ final class ProfileViewController: UIViewController {
 
 extension ProfileViewController {
     private func updateProfileDetails(profile: Profile?) {
-        guard let profile = profileService.profile else {return}
+        guard let profile = profile else {return}
         nameLabel.text = profile.name
         usernameLabel.text = profile.loginName
         userDescription.text = profile.bio

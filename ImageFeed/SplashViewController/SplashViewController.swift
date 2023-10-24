@@ -11,8 +11,8 @@ import ProgressHUD
 final class SplashViewController: UIViewController {
     private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
-    private let oauth2Service = OAuth2Service()
-    private let oauth2TokenStorage = OAuth2TokenStorage()
+    private let oauth2Service = OAuth2Service.shared
+    private let oauth2TokenStorage = OAuth2TokenStorage.shared
     private let splashScreenLogo = UIImage(named: "AuthLogo")
     
     private lazy var logoImageView : UIImageView = {
@@ -67,7 +67,7 @@ final class SplashViewController: UIViewController {
 }
 
 
-// MARK: - Extensions
+// MARK: - Extension SplashViewController
 
 extension SplashViewController: AuthViewControllerDelegate {
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {

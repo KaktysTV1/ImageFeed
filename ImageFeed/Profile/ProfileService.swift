@@ -9,6 +9,7 @@ import Foundation
 
 final class ProfileService {
     static let shared = ProfileService()
+    private init(){}
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private (set) var profile: Profile?
@@ -45,34 +46,3 @@ extension ProfileService {
         return request
     }
 }
-
-struct ProfileResult: Codable {
-    let username: String
-    let firstName: String
-    let lastName: String
-    let bio: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case username = "username"
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case bio = "bio"
-        
-    }
-}
-
-struct Profile: Codable {
-    let username: String
-    let name: String
-    let loginName: String
-    let bio: String?
-    
-    init(decodedData: ProfileResult) {
-        self.username = decodedData.username
-        self.name = (decodedData.firstName ) + " " + (decodedData.lastName )
-        self.loginName = "@" + (decodedData.username )
-        self.bio = decodedData.bio
-    }
-}
-
-
