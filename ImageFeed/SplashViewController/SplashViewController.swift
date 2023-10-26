@@ -50,7 +50,9 @@ final class SplashViewController: UIViewController {
     
     private func setupSplashView(){
         view.addSubview(logoImageView)
-        
+    }
+    
+    private func setupSplashConstraiints(){
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
