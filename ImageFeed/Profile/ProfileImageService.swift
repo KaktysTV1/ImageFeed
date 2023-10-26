@@ -45,7 +45,6 @@ final class ProfileImageService {
         guard let url = URL(string: "\(defaultBaseApiURL)" + "/users/" + username) else { fatalError("Failed to create URL") }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-        print("реквест аватарки \(request)")
         return request
     }
     
