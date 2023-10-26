@@ -32,6 +32,8 @@ final class AuthViewController: UIViewController {
     }
 }
 
+// MARK: - Extension AuthViewController
+
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)

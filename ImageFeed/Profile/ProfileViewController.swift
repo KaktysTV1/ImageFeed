@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
+    private let storageToken = OAuth2TokenStorage.shared
+    private let profileService = ProfileService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
+    private var profileImage = UIImage(named: "Avatar.png")
     
     private let imageView: UIImageView = {
         let image = UIImage(named: "Avatar.png")
@@ -67,6 +72,12 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        updateProfileDetails(profile: profileService.profile)
+        observeAvatarChanges()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateAvatar()
     }
     
     private func setupViews() {
@@ -103,5 +114,37 @@ final class ProfileViewController: UIViewController {
     
     @objc private func didTapButton() {
         print("Tap tap tap")
+    }
+}
+
+extension ProfileViewController {
+    private func updateProfileDetails(profile: Profile?) {
+        guard let profile = profile else {return}
+        nameLabel.text = profile.name
+        usernameLabel.text = profile.loginName
+        userDescription.text = profile.bio
+    }
+    
+    private func observeAvatarChanges(){
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(forName: ProfileImageService.DidChangeNotification, object: nil, queue: .main){
+                [weak self] _ in
+                guard let self = self else {return}
+                self.updateAvatar()
+            }
+        updateAvatar()
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else {return}
+        let processor = RoundCornerImageProcessor(cornerRadius: imageView.frame.width)
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder.svg"), options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
+        let cache = ImageCache.default
+        cache.clearDiskCache()
+        cache.clearMemoryCache()
     }
 }
