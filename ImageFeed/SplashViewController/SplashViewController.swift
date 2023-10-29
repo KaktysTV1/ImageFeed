@@ -40,6 +40,7 @@ final class SplashViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .ypBlack
+        //setupConstraints()
         setupSplashView()
         setNeedsStatusBarAppearanceUpdate()
     }
@@ -50,13 +51,24 @@ final class SplashViewController: UIViewController {
     
     private func setupSplashView(){
         view.addSubview(logoImageView)
-    }
-    
-    private func setupSplashConstraiints(){
+        
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
+    
+//    private func setupConstraints(){
+//        var constraints = [NSLayoutConstraint]()
+//
+//        constraints.append(logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
+//        constraints.append(logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
+//
+//        NSLayoutConstraint.activate(constraints)
+//
+////        NSLayoutConstraint.activate([
+////            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+////            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
+//    }
     
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else { assertionFailure("Invalid Configuration")

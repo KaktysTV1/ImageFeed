@@ -75,7 +75,7 @@ final class ImagesListService {
     }
 }
 
-
+//MARK: - 
 
 extension Array {
     func withReplaced(itemAt: Int, newValue: Photo) -> [Photo] {
