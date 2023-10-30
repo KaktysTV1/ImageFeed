@@ -21,6 +21,13 @@ final class ImagesListService {
     func updatePhotos(_ photos: [Photo]) {
              self.photos = photos
          }
+    
+    func clean(){
+        photos = []
+        lastLoadedPage = nil
+        task?.cancel()
+        task = nil
+    }
 //MARK: - Download image list
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
