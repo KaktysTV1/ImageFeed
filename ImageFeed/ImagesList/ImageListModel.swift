@@ -47,3 +47,7 @@ struct Photo {
      let largeImageURL: String?
      let isLiked: Bool
  }
+
+struct LikePhotoResult: Decodable {
+    let photo: PhotoResult?
+}

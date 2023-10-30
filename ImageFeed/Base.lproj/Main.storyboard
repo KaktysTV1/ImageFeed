@@ -43,7 +43,10 @@
                                                     <rect key="frame" x="354" y="4" width="44" height="44"/>
                                                     <color key="tintColor" name="YP Red "/>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                    <state key="normal" image="ActiveLikeButton"/>
+                                                    <state key="normal" image="NoActiveLikeButton"/>
+                                                    <connections>
+                                                        <action selector="likeButtonClicked" destination="q79-gu-tcS" eventType="touchUpInside" id="tRg-Ss-onc"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXM-XT-4St" userLabel="Date Lable">
                                                     <rect key="frame" x="24" y="196" width="102" height="16"/>
@@ -98,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-336" y="-1359"/>
+            <point key="canvasLocation" x="-526" y="-713"/>
         </scene>
         <!--Single Image View Controller-->
         <scene sceneID="sMl-3b-uRN">
@@ -169,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJv-on-vcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="553.62318840579712" y="-1359.375"/>
+            <point key="canvasLocation" x="441" y="-713"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2Ly-MF-Q5l">
@@ -185,7 +188,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zxb-99-rWT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1441" y="-1042"/>
+            <point key="canvasLocation" x="-1442" y="-713"/>
         </scene>
         <!--Auth View Controller-->
         <scene sceneID="nP6-4B-7Gu">
@@ -313,11 +316,11 @@
     </scenes>
     <resources>
         <image name="0" width="200" height="132"/>
-        <image name="ActiveLikeButton" width="44" height="44"/>
         <image name="AuthLogo" width="60" height="60"/>
         <image name="Back" width="24" height="24"/>
         <image name="BackButtonBlack" width="24" height="24"/>
         <image name="MainActive" width="30" height="30"/>
+        <image name="NoActiveLikeButton" width="44" height="44"/>
         <image name="Share" width="50" height="50"/>
         <namedColor name="YP Black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

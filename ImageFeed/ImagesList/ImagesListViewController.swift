@@ -73,6 +73,8 @@ final class ImagesListViewController: UIViewController {
     }
 }
 
+//MARK: - Extensions
+
 extension ImagesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return photos.count
@@ -84,7 +86,7 @@ extension ImagesListViewController: UITableViewDataSource {
         guard let imageListCell = cell as? ImagesListCell else {
             return UITableViewCell()
         }
-        
+        imageListCell.delegate = self
         configCell(for: imageListCell, with: indexPath)
         return imageListCell
     }
@@ -101,6 +103,15 @@ extension ImagesListViewController {
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
             cell.cellImage.kf.indicatorType = .none
         }
+        if let date = imagesListService.photos[indexPath.row].createdAt {
+            cell.dataLable.text = dateFormatter.string(from: date)
+        } else {
+            cell.dataLable.text = ""
+        }
+        let isLiked = imagesListService.photos[indexPath.row].isLiked == false
+        let like = isLiked ? UIImage(named: "NoActiveLikeButton") : UIImage(named: "ActiveLikeButton")
+        cell.likeButton.setImage(like, for: .normal)
+        cell.selectionStyle = .none
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -123,3 +134,32 @@ extension ImagesListViewController: UITableViewDelegate {
     }
 }
 
+extension ImagesListViewController: ImagesListCellDelegate {
+    func imageListCellDidTapLike(_ cell: ImagesListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        let photo = photos[indexPath.row]
+        UIBlockingProgressHUD.show()
+        imagesListService.changeLike(photoId: photo.id, isLike: photo.isLiked) {result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.photos = self.imagesListService.photos
+                    cell.setIsLiked(isLiked: self.photos[indexPath.row].isLiked)
+                    UIBlockingProgressHUD.dismiss()
+                case .failure(let error):
+                    UIBlockingProgressHUD.dismiss()
+                    self.showLikeErrorAlert(with: error)
+                }
+            }
+        }
+    }
+    
+    private func showLikeErrorAlert(with error: Error) {
+        let alert = UIAlertController(
+            title: "Что-то пошло не так(",
+            message: "Не удалось поставить лайк",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
+    }
+}
