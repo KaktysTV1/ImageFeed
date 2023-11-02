@@ -57,19 +57,6 @@ final class SplashViewController: UIViewController {
             logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
     }
     
-//    private func setupConstraints(){
-//        var constraints = [NSLayoutConstraint]()
-//
-//        constraints.append(logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor))
-//        constraints.append(logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor))
-//
-//        NSLayoutConstraint.activate(constraints)
-//
-////        NSLayoutConstraint.activate([
-////            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-////            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor)])
-//    }
-    
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else { assertionFailure("Invalid Configuration")
             return
