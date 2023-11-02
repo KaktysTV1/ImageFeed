@@ -33,6 +33,8 @@
 		EFB839112AA9EC45008FED55 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB839102AA9EC45008FED55 /* ProfileViewController.swift */; };
 		EFB839182AB080D2008FED55 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB839172AB080D2008FED55 /* SingleImageViewController.swift */; };
 		EFBE4B822AE85B5500924543 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE4B812AE85B5500924543 /* ProfileModel.swift */; };
+		EFBE4B842AEAE8BB00924543 /* ImageListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE4B832AEAE8BB00924543 /* ImageListModel.swift */; };
+		EFBE4B862AEAECEA00924543 /* ImageListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBE4B852AEAECEA00924543 /* ImageListService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +63,8 @@
 		EFB839102AA9EC45008FED55 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EFB839172AB080D2008FED55 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		EFBE4B812AE85B5500924543 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		EFBE4B832AEAE8BB00924543 /* ImageListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListModel.swift; sourceTree = "<group>"; };
+		EFBE4B852AEAECEA00924543 /* ImageListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,8 @@
 			children = (
 				EFB838D92A9B9339008FED55 /* ImagesListViewController.swift */,
 				EFB8390D2A9FC0B3008FED55 /* ImagesListCell.swift */,
+				EFBE4B832AEAE8BB00924543 /* ImageListModel.swift */,
+				EFBE4B852AEAECEA00924543 /* ImageListService.swift */,
 			);
 			path = ImagesList;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 				EF4458AE2ADC51F1004A9CC6 /* ProfileImageService.swift in Sources */,
 				EF4165042AC1F9D000BA637F /* OAuth2Service.swift in Sources */,
 				EFB839112AA9EC45008FED55 /* ProfileViewController.swift in Sources */,
+				EFBE4B862AEAECEA00924543 /* ImageListService.swift in Sources */,
 				EFB838D62A9B9339008FED55 /* AppDelegate.swift in Sources */,
 				EF4458B92AE2D8EC004A9CC6 /* TabBarController.swift in Sources */,
 				EF4458AA2AD41B9A004A9CC6 /* UIBlockingProgressHUD.swift in Sources */,
@@ -279,6 +286,7 @@
 				EFBE4B822AE85B5500924543 /* ProfileModel.swift in Sources */,
 				EF4458B02AE01A66004A9CC6 /* URLSession.swift in Sources */,
 				EF4146FF2AC0CA64002C0FC0 /* AuthViewController.swift in Sources */,
+				EFBE4B842AEAE8BB00924543 /* ImageListModel.swift in Sources */,
 				EF4165092AC499BE00BA637F /* OAuth2TokenStorage.swift in Sources */,
 				EF4146FC2ABF6C83002C0FC0 /* Constants.swift in Sources */,
 			);
