@@ -17,6 +17,7 @@ protocol ProfileViewControllerProtocol: AnyObject {
     func updateAvatar()
     func setupConstraints()
     func showLogoutAlert()
+    func setupViews()
     
 }
 
@@ -95,7 +96,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         updateAvatar()
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         view.backgroundColor = .ypBlack
         view.addSubview(imageView)
         view.addSubview(nameLabel)
