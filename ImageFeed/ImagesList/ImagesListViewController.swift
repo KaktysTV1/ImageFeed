@@ -12,6 +12,7 @@ protocol ImagesListViewControllerProtocol: AnyObject {
     var presenter: ImagesListViewPresenterProtocol? {get set}
     func updateTableViewAnimated()
     var photos: [Photo] {get set}
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
 }
 
 final class ImagesListViewController: UIViewController, ImagesListViewControllerProtocol {
