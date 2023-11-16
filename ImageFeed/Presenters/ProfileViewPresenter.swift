@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import Kingfisher
+
 
 protocol ProfileViewPresenterProtocol {
     var view: ProfileViewControllerProtocol? { get set }

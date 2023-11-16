@@ -28,7 +28,7 @@ final class ImagesListService {
         task?.cancel()
         task = nil
     }
-//MARK: - Download image list
+//MARK: - Загрузка ленты изображений
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
         guard task == nil else { return }

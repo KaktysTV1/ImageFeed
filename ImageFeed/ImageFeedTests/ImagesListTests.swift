@@ -11,6 +11,7 @@ import Foundation
 
 final class ImagesListTests: XCTestCase {
 
+    //MARK: - Тестируем контроллер
     func testViewControllerCallsViewDidLoad(){
         
         let imageListService = ImagesListService.shared
@@ -24,6 +25,7 @@ final class ImagesListTests: XCTestCase {
         XCTAssertTrue(presenter.viewDidLoadCalled)
     }
 
+    //MARK: - Тестируем запрос на лайк
     func testSetLike(){
         let photos: [Photo] = []
         let imagesListService = ImagesListService.shared
@@ -37,6 +39,7 @@ final class ImagesListTests: XCTestCase {
         XCTAssertTrue(presenter.didSetLikeCallSuccess)
     }
     
+    //MARK: - Тест загрузки фото
     func testLoadPhotoToTable1() {
         
         let tableView = UITableView()
@@ -55,6 +58,7 @@ final class ImagesListTests: XCTestCase {
     }
 }
 
+//MARK: - Дублеры
 final class ImagesListPresenterSpy: ImagesListViewPresenterProtocol {
    
     var view: ImagesListViewControllerProtocol?

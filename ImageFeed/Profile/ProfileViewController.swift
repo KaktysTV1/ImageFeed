@@ -76,6 +76,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
             action: #selector(Self.didTapButton)
         )
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "logoutButton"
         button.tintColor = .ypRed
         
         return button
@@ -89,6 +90,8 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        presenter.view = self
+        presenter.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
