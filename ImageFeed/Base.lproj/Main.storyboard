@@ -219,6 +219,7 @@
                                         <integer key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="Authenticate"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="6XW-aF-jJz" kind="presentation" identifier="ShowWebView" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="vto-sh-Tpi"/>

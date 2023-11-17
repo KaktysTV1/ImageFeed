@@ -7,7 +7,6 @@
 
 import XCTest
 
-
 final class ImageFeedUITests: XCTestCase {
     
     private let nameLable = ""
@@ -27,57 +26,56 @@ final class ImageFeedUITests: XCTestCase {
         app.buttons["Authenticate"].tap()
         
         let webView = app.webViews["UnsplashWebView"]
-        
-        XCTAssert(webView.waitForExistence(timeout: 5))
-        
+        XCTAssertTrue(webView.waitForExistence(timeout: 5))
         let loginTextField = webView.descendants(matching: .textField).element
-        XCTAssert(loginTextField.waitForExistence(timeout: 5))
-        
+        XCTAssertTrue(loginTextField.waitForExistence(timeout: 5))
         loginTextField.tap()
         loginTextField.typeText(email)
-        webView.swipeUp()
+        webView.tap()
         
-        let paswordTextField = webView.descendants(matching: .textField).element
-        XCTAssert(paswordTextField.waitForExistence(timeout: 5))
+        let passwordTextField = webView.descendants(matching: .secureTextField).element
+        XCTAssertTrue(passwordTextField.waitForExistence(timeout: 5))
+        passwordTextField.tap()
+        passwordTextField.typeText(password)
+        webView.tap()
+        sleep(3)
         
-        paswordTextField.tap()
-        paswordTextField.typeText(password)
-        webView.swipeUp()
-        
+        XCTAssertTrue(webView.buttons["Login"].waitForExistence(timeout: 5))
         webView.buttons["Login"].tap()
         
         let tablesQuery = app.tables
         let cell = tablesQuery.children(matching: .cell).element(boundBy: 0)
         
         XCTAssertTrue(cell.waitForExistence(timeout: 5))
-        
-        print(app.debugDescription)
     }
     
     func testFeed() throws {
-        let tablesQuery = app.tables
-        let cell = tablesQuery.children(matching: .cell).element(boundBy: 0)
-        cell.swipeUp()
         
+        XCTAssertTrue(app.tabBars.buttons.element(boundBy: 0).waitForExistence(timeout: 4))
+        
+        let tableQuery = app.tables
+        let cell = tableQuery.children(matching: .cell).element(boundBy: 0)
+        XCTAssertTrue(cell.waitForExistence(timeout: 3))
+        cell.swipeDown()
         sleep(2)
         
-        let cellToLike = tablesQuery.children(matching: .cell).element(boundBy: 1)
+        let cellTwo = tableQuery.children(matching: .cell).element(boundBy: 1)
+        XCTAssertTrue(cellTwo.waitForExistence(timeout: 3))
+        XCTAssertTrue(cellTwo.buttons["likeButton"].waitForExistence(timeout: 1))
+        cellTwo.buttons["likeButton"].tap()
+        sleep(3)
+        cellTwo.buttons["likeButton"].tap()
+        sleep(3)
         
-        cellToLike.buttons["likeButton"].tap()
-        cellToLike.buttons["likeButton"].tap()
-        
-        sleep(2)
-        
-        cellToLike.tap()
-        
-        sleep(2)
+        cellTwo.tap()
+        sleep(3)
         
         let image = app.scrollViews.images.element(boundBy: 0)
         image.pinch(withScale: 3, velocity: 1)
         image.pinch(withScale: 0.5, velocity: -1)
         
-        let navBackButtonWhiteButton = app.buttons["backButton"]
-        navBackButtonWhiteButton.tap()
+        XCTAssertTrue(app.buttons["backButton"].waitForExistence(timeout: 3))
+        app.buttons["backButton"].tap()
     }
     
     func testProfile() throws {
@@ -90,5 +88,8 @@ final class ImageFeedUITests: XCTestCase {
         app.buttons["logoutButton"].tap()
         
         app.alerts["Пока, пока!"].scrollViews.otherElements.buttons["Да"].tap()
+        
+        let authButton = app.buttons["Authenticate"]
+        XCTAssertTrue(authButton.waitForExistence(timeout: 5))
     }
 }
