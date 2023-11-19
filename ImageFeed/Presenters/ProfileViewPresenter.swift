@@ -23,6 +23,7 @@ protocol ProfileViewPresenterProtocol {
 
 final class ProfileViewPresenter: ProfileViewPresenterProtocol {
     weak var view: ProfileViewControllerProtocol?
+    private let webViewViewController = WebViewViewController()
     private var profileImageServiceObserver: NSObjectProtocol?
     var profileService = ProfileService.shared
     private let storageToken = OAuth2TokenStorage.shared
@@ -32,14 +33,15 @@ final class ProfileViewPresenter: ProfileViewPresenterProtocol {
         observeAvatarChanges()
     }
     
-    func observeAvatarChanges(){
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(forName: ProfileImageService.DidChangeNotification, object: nil, queue: .main){
-                [weak self] _ in
-                guard let self = self else {return}
+    func observeAvatarChanges() {
+        profileImageServiceObserver = NotificationCenter.default.addObserver(
+                forName: ProfileImageService.DidChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
                 view?.updateAvatar()
             }
-        view?.updateAvatar()
     }
     
     func showLogoutAlert() -> UIAlertController {

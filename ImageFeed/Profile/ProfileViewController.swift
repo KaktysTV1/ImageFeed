@@ -141,19 +141,21 @@ extension ProfileViewController {
     
     func showLogoutAlert() {
         let alert = presenter.showLogoutAlert()
-            present(alert, animated: true, completion: nil)
-        }
+        present(alert, animated: true, completion: nil)
+    }
     
-    internal func updateAvatar() {
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let url = URL(string: profileImageURL)
-        else {return}
+    func updateAvatar() {
+        guard let url = presenter.getUrlForProfileImage() else { return }
         let processor = RoundCornerImageProcessor(cornerRadius: imageView.frame.width)
         imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder.svg"), options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
+        imageView.kf.setImage(with: url,
+                              placeholder: UIImage(named: "placeholder.svg"),
+                              options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
         let cache = ImageCache.default
         cache.clearDiskCache()
         cache.clearMemoryCache()
     }
 }
+
+
+
