@@ -9,9 +9,9 @@ import UIKit
 import Kingfisher
 
 protocol ImagesListViewControllerProtocol: AnyObject {
-    var presenter: ImagesListViewPresenterProtocol? {get set}
+    var presenter: ImagesListPresenterProtocol? { get set }
     func updateTableViewAnimated()
-    var photos: [Photo] {get set}
+    var photos: [Photo] { get set }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
 }
 
@@ -20,9 +20,9 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
     
     @IBOutlet weak var tableView: UITableView!
     
-    lazy var presenter: ImagesListViewPresenterProtocol? = {
-        return ImageListViewPresenter()
-    }()
+    lazy var presenter: ImagesListPresenterProtocol? = {
+        return ImagesListPresenter()
+    } ()
     
     private let imagesListService = ImagesListService.shared
     var photos: [Photo] = []
@@ -158,8 +158,8 @@ extension ImagesListViewController: ImagesListCellDelegate {
         }
     }
     
-    private func showLikeErrorAlert(with error: Error) {
-        guard let alert = presenter?.showLikeErrorAlert(with: Error.self as! Error) else {return}
+    func showLikeErrorAlert(with error: Error)  {
+        guard let alert = presenter?.makeAlert(with: Error.self as! Error) else { return }
         present(alert, animated: true, completion: nil)
     }
 }

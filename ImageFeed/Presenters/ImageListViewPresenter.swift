@@ -5,22 +5,22 @@
 //  Created by Андрей Чупрыненко on 06.11.2023.
 //
 
-import Foundation
 import UIKit
 
-protocol ImagesListViewPresenterProtocol {
-    var view: ImagesListViewControllerProtocol? {get set}
-    var imagesListService: ImagesListService {get}
+protocol ImagesListPresenterProtocol {
+    var view: ImagesListViewControllerProtocol? { get set }
     func viewDidLoad()
+    var imagesListService: ImagesListService { get }
     func fetchPhotosNextPage()
+    func checkCompletedList(_ indexPath: IndexPath)
     func setLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void)
-    func showLikeErrorAlert(with error: Error) -> UIAlertController
+    func makeAlert(with error: Error) -> UIAlertController
 }
 
-final class ImageListViewPresenter: ImagesListViewPresenterProtocol {
-    var view: ImagesListViewControllerProtocol?
+final class ImagesListPresenter: ImagesListPresenterProtocol {
+    weak var view: ImagesListViewControllerProtocol?
     private var imagesListServiceObserver: NSObjectProtocol?
-    let imagesListService = ImagesListService.shared
+    internal let imagesListService = ImagesListService.shared
     
     func viewDidLoad() {
         imagesListServiceObserver = NotificationCenter.default.addObserver(
@@ -33,24 +33,30 @@ final class ImageListViewPresenter: ImagesListViewPresenterProtocol {
         imagesListService.fetchPhotosNextPage()
     }
     
-    func fetchPhotosNextPage(){
+    func fetchPhotosNextPage() {
         imagesListService.fetchPhotosNextPage()
     }
     
-    func setLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
-            imagesListService.changeLike(photoId: photoId, isLike: isLike, {[weak self] result in
-                guard let self = self else { return }
-                switch result{
-                case .success(_):
-                    completion(.success(()))
-                case .failure(let error):
-                    completion(.failure(error))
-                    print(error.localizedDescription)
-                }
-            })
+    func checkCompletedList(_ indexPath: IndexPath) {
+        if imagesListService.photos.isEmpty || (indexPath.row + 1 == imagesListService.photos.count) {
+            fetchPhotosNextPage()
         }
+    }
     
-    func showLikeErrorAlert(with error: Error) -> UIAlertController {
+    func setLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void) {
+        imagesListService.changeLike(photoId: photoId, isLike: isLike, {[weak self] result in
+            guard let self = self else { return }
+            switch result{
+            case .success(_):
+                completion(.success(()))
+            case .failure(let error):
+                completion(.failure(error))
+                print(error.localizedDescription)
+            }
+        })
+    }
+    
+    func makeAlert(with error: Error) -> UIAlertController {
         let alert = UIAlertController(
             title: "Что-то пошло не так(",
             message: "Не удалось поставить лайк",
