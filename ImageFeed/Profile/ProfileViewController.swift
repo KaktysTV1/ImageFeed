@@ -92,6 +92,7 @@ final class ProfileViewController: UIViewController, ProfileViewControllerProtoc
         setupConstraints()
         presenter.view = self
         presenter.viewDidLoad()
+        updateAvatar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
