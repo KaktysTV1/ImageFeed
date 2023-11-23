@@ -28,7 +28,7 @@ final class ImagesListService {
         task?.cancel()
         task = nil
     }
-//MARK: - Download image list
+//MARK: - Загрузка ленты изображений
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
         guard task == nil else { return }
@@ -76,7 +76,7 @@ final class ImagesListService {
         var request = URLRequest.makeHTTPRequest(
             path: "/photos?page=\(page)&&per_page=\(perPage)",
             httpMethod: "GET",
-            baseURL: URL(string: "\(defaultBaseApiURL)")!)
+            baseURL: URL(string: "\(Constants.defaultBaseApiURL)")!)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }
@@ -125,7 +125,7 @@ final class ImagesListService {
     func postLikeRequest(_ token: String, photoId: String) -> URLRequest? {
         var requestPost = URLRequest.makeHTTPRequest(path: "photos/\(photoId)/like",
                                                      httpMethod: "POST",
-                                                     baseURL: URL(string: "\(defaultBaseApiURL)")!)
+                                                     baseURL: URL(string: "\(Constants.defaultBaseApiURL)")!)
         requestPost.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return requestPost
     }
@@ -133,7 +133,7 @@ final class ImagesListService {
     func deleteLikeRequest(_ token: String, photoId: String) -> URLRequest? {
         var requestDelete = URLRequest.makeHTTPRequest(path: "photos/\(photoId)/like",
                                                        httpMethod: "DELETE",
-                                                       baseURL: URL(string: "\(defaultBaseApiURL)")!)
+                                                       baseURL: URL(string: "\(Constants.defaultBaseApiURL)")!)
         requestDelete.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return requestDelete
     }

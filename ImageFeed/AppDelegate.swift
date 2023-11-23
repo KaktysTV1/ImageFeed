@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func setupProgressHUD() {
         ProgressHUD.animationType = .systemActivityIndicator
-        ProgressHUD.colorHUD = .ypBlack
-        ProgressHUD.colorAnimation = .lightGray
+//        ProgressHUD.colorHUD = .ypBlack
+//        ProgressHUD.colorAnimation = .lightGray
     }
 }
 

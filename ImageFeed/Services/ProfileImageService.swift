@@ -11,7 +11,6 @@ import UIKit
 final class ProfileImageService {
     static let DidChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
     static let shared = ProfileImageService()
-    private init(){}
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private let storageToken = OAuth2TokenStorage.shared
@@ -22,10 +21,10 @@ final class ProfileImageService {
         task?.cancel()
         task = nil
     }
-
+    
     func fetchProfileImageURL(username: String, _ completion: @escaping (Result<String, Error>) -> Void) {
         assert(Thread.isMainThread)
-
+        
         let request = makeRequest(token: storageToken.token!, username: username)
         let session = URLSession.shared
         let task = session.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
@@ -48,7 +47,7 @@ final class ProfileImageService {
     }
     
     private func makeRequest(token: String, username: String) -> URLRequest {
-        guard let url = URL(string: "\(defaultBaseApiURL)" + "/users/" + username) else { fatalError("Failed to create URL") }
+        guard let url = URL(string: "\(Constants.defaultBaseApiURL)" + "/users/" + username) else { fatalError("Failed to create URL") }
         var request = URLRequest(url: url)
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
@@ -58,7 +57,7 @@ final class ProfileImageService {
 
 struct UserResult: Codable {
     let profileImage: [String:String]
-
+    
     enum CodingKeys: String, CodingKey {
         case profileImage = "profile_image"
     }
@@ -66,7 +65,7 @@ struct UserResult: Codable {
 
 struct ProfileImage: Codable {
     let profileImage: [String:String]
-
+    
     init(decodedData: UserResult) {
         self.profileImage = decodedData.profileImage
     }

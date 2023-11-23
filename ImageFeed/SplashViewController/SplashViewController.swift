@@ -23,17 +23,20 @@ final class SplashViewController: UIViewController {
  
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if (oauth2TokenStorage.token != nil) {
-            guard let token = oauth2TokenStorage.token else { return }
+
+        guard UIBlockingProgressHUD.isShowing == false else { return }
+        if let token = OAuth2TokenStorage.shared.token {
             fetchProfile(token: token)
+            switchToTabBarController()
         } else {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            guard let authViewController = storyBoard.instantiateViewController(withIdentifier: "AuthViewController")
-                    as? AuthViewController else {return}
+            guard let authViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController else {
+                assertionFailure("Failed to show Authentication Screen")
+                return
+            }
+
             authViewController.delegate = self
             authViewController.modalPresentationStyle = .fullScreen
-            self.present(authViewController, animated: true)
+            present(authViewController, animated: true)
         }
     }
     

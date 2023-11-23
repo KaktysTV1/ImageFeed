@@ -8,13 +8,30 @@
 import UIKit
 import Kingfisher
 
-final class ProfileViewController: UIViewController {
+protocol ProfileViewControllerProtocol: AnyObject {
+    var presenter: ProfileViewPresenterProtocol {get set}
+    var imageView: UIImageView {get set}
+    var nameLabel: UILabel {get set}
+    var usernameLabel: UILabel {get set}
+    var userDescription: UILabel {get set}
+    func updateAvatar()
+    func setupConstraints()
+    func showLogoutAlert()
+    func setupViews()
+    
+}
+
+final class ProfileViewController: UIViewController, ProfileViewControllerProtocol {
+    var presenter: ProfileViewPresenterProtocol = {
+        return ProfileViewPresenter()
+    }()
+    
     private let storageToken = OAuth2TokenStorage.shared
     private let profileService = ProfileService.shared
-    private var profileImageServiceObserver: NSObjectProtocol?
+    
     private var profileImage = UIImage(named: "Avatar.png")
     
-    private let imageView: UIImageView = {
+    var imageView: UIImageView = {
         let image = UIImage(named: "Avatar.png")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +39,7 @@ final class ProfileViewController: UIViewController {
         return imageView
     }()
     
-    private let nameLabel: UILabel = {
+    var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Екатерина Новикова"
         label.textColor = .ypWhite
@@ -32,7 +49,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
     
-    private let usernameLabel: UILabel = {
+    var usernameLabel: UILabel = {
         let label = UILabel()
         label.text = "@katerina_nov"
         label.textColor = .ypGray
@@ -42,7 +59,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
     
-    private let userDescription: UILabel = {
+    var userDescription: UILabel = {
         let label = UILabel()
         label.text = "Привет мир!"
         label.textColor = .ypWhite
@@ -59,6 +76,7 @@ final class ProfileViewController: UIViewController {
             action: #selector(Self.didTapButton)
         )
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.accessibilityIdentifier = "logoutButton"
         button.tintColor = .ypRed
         
         return button
@@ -72,8 +90,9 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
-        updateProfileDetails(profile: profileService.profile)
-        observeAvatarChanges()
+        presenter.view = self
+        presenter.viewDidLoad()
+        updateAvatar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,7 +100,7 @@ final class ProfileViewController: UIViewController {
         updateAvatar()
     }
     
-    private func setupViews() {
+    internal func setupViews() {
         view.backgroundColor = .ypBlack
         view.addSubview(imageView)
         view.addSubview(nameLabel)
@@ -90,7 +109,7 @@ final class ProfileViewController: UIViewController {
         view.addSubview(logoutButton)
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         var constraints = [NSLayoutConstraint]()
         
         constraints.append(imageView.widthAnchor.constraint(equalToConstant: 70))
@@ -116,66 +135,27 @@ final class ProfileViewController: UIViewController {
     @objc private func didTapButton() {
         showLogoutAlert()
     }
-    
-    private func logout() {
-        storageToken.cleanToken()
-        WebViewViewController.clean()
-        cleanServicesData()
-        tabBarController?.dismiss(animated: true)
-        guard let window = UIApplication.shared.windows.first else {
-            fatalError("Invalid Configuration") }
-        window.rootViewController = SplashViewController()
-    }
-    
-    private func showLogoutAlert() {
-        let alert = UIAlertController(
-            title: "Пока, пока!",
-            message: "Уверены, что хотите выйти?",
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: { [weak self] action in
-            guard let self = self else { return }
-            self.logout()
-        }))
-        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func cleanServicesData() {
-        ImagesListService.shared.clean()
-        ProfileService.shared.clean()
-        ProfileImageService.shared.clean()
-    }
 }
 
 extension ProfileViewController {
-    private func updateProfileDetails(profile: Profile?) {
-        guard let profile = profile else {return}
-        nameLabel.text = profile.name
-        usernameLabel.text = profile.loginName
-        userDescription.text = profile.bio
+    
+    func showLogoutAlert() {
+        let alert = presenter.showLogoutAlert()
+        present(alert, animated: true, completion: nil)
     }
     
-    private func observeAvatarChanges(){
-        profileImageServiceObserver = NotificationCenter.default
-            .addObserver(forName: ProfileImageService.DidChangeNotification, object: nil, queue: .main){
-                [weak self] _ in
-                guard let self = self else {return}
-                self.updateAvatar()
-            }
-        updateAvatar()
-    }
-    
-    private func updateAvatar() {
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let url = URL(string: profileImageURL)
-        else {return}
+    func updateAvatar() {
+        guard let url = presenter.getUrlForProfileImage() else { return }
         let processor = RoundCornerImageProcessor(cornerRadius: imageView.frame.width)
         imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder.svg"), options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
+        imageView.kf.setImage(with: url,
+                              placeholder: UIImage(named: "placeholder.svg"),
+                              options: [.processor(processor),.cacheSerializer(FormatIndicatedCacheSerializer.png)])
         let cache = ImageCache.default
         cache.clearDiskCache()
         cache.clearMemoryCache()
     }
 }
+
+
+
